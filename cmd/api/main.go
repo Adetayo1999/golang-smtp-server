@@ -21,7 +21,8 @@ func main() {
 
 	errorLogger := log.New(os.Stderr, "Error:\t", log.Ldate|log.Ltime|log.Llongfile);
 
-	err := godotenv.Load(".env");
+	err := godotenv.Load();
+
 
 	if err != nil {
 		 errorLogger.Fatalln(err);
@@ -30,6 +31,7 @@ func main() {
 	port := os.Getenv("PORT");
 	email := os.Getenv("EMAIL");
 	app_password := os.Getenv("APP_PASSWORD");
+
 
 	smtpAuth := smtp.PlainAuth("", email, app_password, "smtp.gmail.com");
 
